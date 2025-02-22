@@ -1,0 +1,8 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@spatial-id/javascript-sdk": "github:spatial-id/javascript-sdk",
+    "pg": "^8.11.0",
+    "pg-copy-streams": "^6.0.6"
+  }
+}

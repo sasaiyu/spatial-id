@@ -1,0 +1,51 @@
+services:
+  app:
+    build:
+      dockerfile: ./docker/app/Dockerfile
+      context: .
+    container_name: app
+    environment:
+      USER_NAME: ${USER_NAME:-vscode}
+      GROUP_NAME: ${GROUP_NAME:-vscode}
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-database}
+      DB_USER: ${DB_USER:-vscode}
+      DB_PASSWORD: ${DB_PASSWORD:-vscode}
+    volumes:
+      - .:/workspace:cached
+      - ./app/node_modules:/workspace/app/node_modules
+    tty: true
+  db:
+    image: postgres:14.2
+    container_name: db
+    environment:
+      POSTGRES_DB: ${DB_NAME:-database}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    volumes:
+      - .:/workspace:cached
+      - db-data:/var/lib/postgresql/data
+      - ./db/initdb:/docker-entrypoint-initdb.d
+    ports:
+      - '5432:5432'
+    restart: always
+  pgadmin4:
+    image: dpage/pgadmin4:6.11
+    container_name: pgadmin4
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin@example.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-password}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'False'
+    ports:
+      - '80:80'
+    volumes:
+      - pgadmin4-data:/var/lib/pgadmin
+      - ./db/config/servers.json:/pgadmin4/servers.json
+volumes:
+  db-data:
+  pgadmin4-data:
+  node_modules:

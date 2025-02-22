@@ -1,0 +1,30 @@
+{
+  "name": "app",
+  "dockerComposeFile": "../../compose.yml",
+  "service": "app",
+  "shutdownAction": "none",
+  "workspaceFolder": "/workspace/app",
+  "remoteUser": "vscode",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts",
+      "nodeGypDependencies": "false",
+      "nvmVersion": "latest"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "[javascript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
+      },
+      "extensions": ["dbaeumer.vscode-eslint", "ritwickdey.LiveServer"]
+    }
+  },
+  "postCreateCommand": "sudo chown vscode:vscode node_modules"
+}
