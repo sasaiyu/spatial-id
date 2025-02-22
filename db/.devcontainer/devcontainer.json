@@ -1,0 +1,17 @@
+{
+  "name": "db",
+  "dockerComposeFile": "../../compose.yml",
+  "service": "db",
+  "workspaceFolder": "/home/postgres/workspace/db",
+  "remoteUser": "postgres",
+  "shutdownAction": "stopCompose",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/robbert229/devcontainer-features/postgresql-client:1": {
+      "version": 13
+    }
+  },
+  "customizations": {
+    "vscode": { "extensions": ["cweijan.vscode-database-client2"] }
+  }
+}
