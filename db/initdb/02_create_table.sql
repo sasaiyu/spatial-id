@@ -17,7 +17,7 @@ COMMENT ON COLUMN sp1.time IS '時間';
 COMMENT ON COLUMN sp1.data IS '属性値';
 
 CREATE TABLE sp2 (
-    spatialId VARCHAR(255) NOT NULL,
+    spatialId NUMERIC(25) NOT NULL,
     time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     data VARCHAR(255),
     PRIMARY KEY (spatialId, time)

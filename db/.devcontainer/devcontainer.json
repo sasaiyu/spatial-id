@@ -13,5 +13,6 @@
   },
   "customizations": {
     "vscode": { "extensions": ["cweijan.vscode-database-client2"] }
-  }
+  },
+  "postCreateCommand": "usermod -u 1000 -g 1000 postgres"
 }
