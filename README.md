@@ -8,6 +8,10 @@
 
 [app コンテナ](https://github.com/sasaiyu/spatial-id/blob/main/app)を起動して JavaScript を使用して空間 ID の変換とデータベースの検索、格納を実施する。
 
+### 空間 ID
+
+[ズームレベル](https://www.ipa.go.jp/digital/architecture/Individual-link/nq6ept000000g0fh-att/4dspatio-temporal-guideline-gamma.pdf)は 15 とする。距離にすると、およそ 1.2km で緯度経度にすると、およそ 0.01 度である。
+
 ### ライブラリ
 
 空間 ID は[javascript-sdk](https://github.com/spatial-id/javascript-sdk)を用いて変換する。データベースは、[node-postgres](https://node-postgres.com/)を用いて接続する。

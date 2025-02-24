@@ -16,17 +16,17 @@ function timer(func, comment) {
 
 try {
   generateData(0, 'data1.csv', 'data2.csv');
-  client.copy('sp1 (latitude, longitude, time, data)', 'data1.csv');
-  await client.copy('sp2 (spatialId, time, data)', 'data2.csv');
+  // client.copy('sp1 (latitude, longitude, time, data)', 'data1.csv');
+  // await client.copy('sp2 (spatialId, time, data)', 'data2.csv');
 
   // SQL実行速度を計測
   client.execute = timer(client.execute, 'execute');
 
-  let res;
-  res = await client.execute('SELECT count(*) from sp1');
-  console.log(res.rows);
-  res = await client.execute('SELECT count(*) from sp2');
-  console.log(res.rows);
+  // let res;
+  // res = await client.execute('SELECT count(*) from sp1');
+  // console.log(res.rows);
+  // res = await client.execute('SELECT count(*) from sp2');
+  // console.log(res.rows);
 } catch (err) {
   console.error(err);
 } finally {
