@@ -4,5 +4,13 @@
     "@spatial-id/javascript-sdk": "github:spatial-id/javascript-sdk",
     "pg": "^8.11.0",
     "pg-copy-streams": "^6.0.6"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.26.9",
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0"
+  },
+  "scripts": {
+    "test": "cross-env NODE_OPTIONS=\"--experimental-vm-modules --no-warnings\" jest"
   }
 }
